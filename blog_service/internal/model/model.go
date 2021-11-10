@@ -1,8 +1,10 @@
 package model
 
-
 import (
+	"fmt"
+
 	"github.com/go-programming-tour-book/blog_service/global"
+	"github.com/go-programming-tour-book/blog_service/pkg/setting"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
@@ -17,7 +19,6 @@ type Model struct {
 	IsDel      uint8  `json:"is_del"`
 }
 
-
 func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	db, err := gorm.Open(databaseSetting.DBType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=%s&parseTime=%t&loc=Local",
 		databaseSetting.UserName,
@@ -30,7 +31,7 @@ func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	if global.ServerSetting.RunMode == "debug" {
 		db.LogMode(true)
 	}

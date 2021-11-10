@@ -1,5 +1,7 @@
 package setting
 
+import "time"
+
 type ServerSettingS struct {
 	RunMode      string
 	HttpPort     string
