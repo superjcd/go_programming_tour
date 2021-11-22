@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"time"
+
 	"github.com/gin-gonic/gin"
 	"github.com/go-programming-tour-book/blog_service/global"
 	"github.com/go-programming-tour-book/blog_service/internal/model"
@@ -33,6 +34,7 @@ func init() {
 func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
 	router := routers.NewRouter()
+
 	s := &http.Server{
 		Addr:           ":" + global.ServerSetting.HttpPort,
 		Handler:        router,
